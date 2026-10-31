@@ -14,11 +14,17 @@ public class TickSightingsBackendApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(SightingClient client) {
+	CommandLineRunner run(SightingClient client, SightingCleaner cleaner,
+						  SightingRepository repository) {
 		return args -> {
-			List<Sighting> sightings = client.fetchAll();
-			System.out.println("Fetched " + sightings.size() + " sightings");
+			List<Sighting> raw = client.fetchAll();
+			List<Sighting> cleaned = cleaner.clean(raw);
+			List<SightingEntity> entities = cleaned.stream()
+					.map(SightingEntity::from)
+					.toList();
+			repository.saveAll(entities);
+			System.out.println("Fetched " + raw.size() + ", kept " + cleaned.size()
+					+ ", saved " + repository.count());
 		};
 	}
-
 }
