@@ -27,6 +27,11 @@ public class SightingController {
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
 
+        if (from != null && to != null && from.isAfter(to)) {
+            throw new IllegalArgumentException(
+                    "'from' (" + from + ") must not be later than 'to' (" + to + ").");
+        }
+
         LocalDateTime start = (from != null)
                 ? from.atStartOfDay()
                 : LocalDateTime.of(1900, 1, 1, 0, 0);
