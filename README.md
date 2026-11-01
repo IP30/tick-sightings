@@ -84,3 +84,6 @@ SQL.
 - Add automated tests for the cleaner and the endpoints.
 - Add pagination to `/sightings` and a species filter.
 - Add the optional AI/ML insights from the brief.
+
+- My video
+https://youtu.be/zZ3cuDhEmfY?si=oLa-xU0TbPZJ61QN
