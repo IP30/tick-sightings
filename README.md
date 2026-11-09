@@ -3,7 +3,6 @@
 Backend for the Elanco 2026 ITSP task (Backend track).
 Built by Ionut Popastica.
 
-Video walkthrough: PASTE YOUR VIDEO LINK HERE
 
 ## What it does
 The application fetches tick sighting records from Elanco's public API
